@@ -28,7 +28,6 @@ $gray: #C4C4C4;
 	color: white;
 }
 
-
 .dull {
 	opacity: .4;
 }
@@ -37,8 +36,9 @@ $gray: #C4C4C4;
 	background-color: #414958;
 }
 
-.blue {
+.blue-selected {
 	background-color: #698FA3;
+	color: white
 }
 
 .red {
@@ -167,7 +167,6 @@ span.thumbnail:hover {
 	}
 
 }
-
 
 input[type="radio"] {
     -webkit-appearance: checkbox; /* Chrome, Safari, Opera */

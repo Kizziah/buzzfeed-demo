@@ -110,16 +110,12 @@
           <span class="col-md-3">
             <div class="btn-group-vertical" ng-click="selectState('Colorado')">
               <div class="btn" 
-                ng-class="{'btn-danger': vacation != 'Colorado',
-                  'btn-primary': vacation == 'Colorado'}"
+                ng-class="vacation == 'Colorado' ? 'btn-primary' : 'btn-danger'"
                 >
               </div>
               <div class="btn" 
-                ng-class="{'btn-default': vacation != 'Colorado',
-                  'btn-primary': vacation == 'Colorado',
-                  'color-white': vacation == 'Colorado'
-                }" 
-                >Colorado</div> 
+                ng-class="vacation == 'Colorado' ? 'btn-primary' :  'btn-default'">
+                Colorado</div> 
             </div>
           </span>        
           <span class="col-md-3"> 
@@ -133,8 +129,7 @@
                   'btn-primary': vacation == 'California',
                   'color-white': vacation == 'California'}"
                 >California</div> 
-            </div>        
-            
+            </div>  
           </span>        
           <span class="col-md-3"> 
             <div class="btn-group-vertical" ng-click="selectState('Camp David')"> 
@@ -172,49 +167,32 @@
           <div class="col-md-12">
             <div class="btn-group btn-group-justified" ng-click="selectAnimal('bear')">
               <div class="btn" 
-                ng-class="{'dark-blue': animal == 'bear',
-                'btn-danger': animal != 'bear'
-                }">                
+                ng-class="animal == 'bear' ? 'dark-blue': 'btn-danger'">               
               </div>
               <div class="btn main" 
-                ng-class="{blue: animal == 'bear',
-                          'color-white': animal == 'bear',
-                  'btn-default': animal != 'bear'
-                }">
-
-                Bear
+                ng-class="animal == 'bear' ? 'blue-selected' : 'btn-default'">
+                  Bear
               </div>
             </div>
           </div>
           <div class="col-md-12">
             <div class="btn-group btn-group-justified" ng-click="selectAnimal('Bobcat')">
               <div class="btn" 
-                ng-class="{'dark-blue': animal == 'Bobcat',
-                'btn-danger': animal != 'Bobcat'
-                }">                
+                ng-class="animal == 'Bobcat' ? 'dark-blue' : 'btn-danger'">
               </div>
               <div class="btn main" 
-                ng-class="{blue: animal == 'Bobcat',
-                          'color-white': animal == 'Bobcat',
-                  'btn-default': animal != 'Bobcat'
-                }">
-                Bobcat
+                ng-class="animal == 'Bobcat' ? 'blue-selected' : 'btn-default'">
+                  Bobcat
               </div>
             </div>
           </div>
           <div class="col-md-12">
             <div class="btn-group btn-group-justified" ng-click="selectAnimal('Horse')">
               <div class="btn" 
-                ng-class="{'dark-blue': animal == 'Horse',
-                'btn-danger': animal != 'Horse'
-                }">                
+                ng-class="animal == 'Horse' ? 'dark-blue' : 'btn-danger'">
               </div>
               <div class="btn main" 
-                ng-class="{blue: animal == 'Horse',
-                          'color-white': animal == 'Horse',
-                  'btn-default': animal != 'Horse'
-                }">
-
+                ng-class="animal == 'Horse' ? 'blue-selected' : 'btn-default'">
                 Horse
               </div>
             </div>
@@ -222,16 +200,11 @@
           <div class="col-md-12">
             <div class="btn-group btn-group-justified" ng-click="selectAnimal('Dog')">
               <div class="btn" 
-                ng-class="{'dark-blue': animal == 'Dog',
-                'btn-danger': animal != 'Dog'
-                }">                
+                ng-class="animal == 'Dog' ? 'dark-blue' : 'btn-danger'">   
               </div>
-              <div class="btn main" 
-                ng-class="{blue: animal == 'Dog',
-                          'color-white': animal == 'Dog',
-                  'btn-default': animal != 'Dog'
-                }">
-
+              <div class="btn main"
+                ng-class="animal == 'Dog' ? 'blue-selected' : 'btn-default' 
+                ">
                 Dog
               </div>
             </div>
