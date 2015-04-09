@@ -1,0 +1,312 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BuzzFeed</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">    
+  <link rel="stylesheet" href="/application.css">
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script type="text/javascript" src="/application.js"></script>
+
+</head>
+<body ng-app="myApp">
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <script>
+    window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+  </script>
+  <nav id="top-nav" class="navbar" role="navigation">
+    <div class='container nav-top'>
+
+      <div class="navbar-header">
+        <div class="btn btn-danger">CONTRIBUTE</div>
+      </div>
+
+      <div class="collapse navbar-collapse" id='collapse-nav'>        
+        <ul class="nav navbar-nav navbar-right">          
+            <li class='pull-right'><div><i class="glyphicon glyphicon-search"></i> SEARCH | LOGIN</div> </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" ng-controller="Ctrl">
+    <div class="row text-center">
+      <div class="btn-group">
+        <a class="fb-share-button btn facebook-blue" data-href="https://developers.facebook.com/docs/plugins/"></a>
+        <a class="btn twitter-blue"  href="https://twitter.com/share"><img src="twitter.png"></a>
+      </div>    
+      <h1>Which Republican President Are You?</h1>
+      <p>Take the Quiz and Share Your Results</p>
+    </div>    
+    <div class="col-md-10 col-md-offset-1" id="main-holder">
+      <div class="row" id="snack">
+        <div class="col-md-12">
+          <p>1. Choose a snack</p>         
+          <span class="col-md-3" id="cherries" ng-click="selectSnack('cherries')"
+            ng-class="{dull: step1 && snack != 'cherries'}">
+            <span class="thumbnail">
+              <img src="1.jpg">
+              <div class="caption" ng-class="{gray: snack == 'cherries'}">
+               <label>               
+                  <input type="radio" ng-model="snack" value="cherries"> Black Cherries
+                </label>
+              </div>
+            </span>
+          </span>          
+          <span class="col-md-3" id="jellybeans"  ng-click=
+          "selectSnack('jellybeans')"
+            ng-class="{dull: step1 && snack != 'jellybeans'}" >
+            <span class="thumbnail">
+              <img src="2.jpg">
+              <div class="caption" ng-class="{gray: snack == 'jellybeans'}">
+              <label>
+                <input type="radio" ng-model="snack" value="jellybeans">
+                Jellybeans
+               </label>
+              </div>
+            </span>   
+          </span>      
+          <span class="col-md-3" id="popcorn" ng-click=
+          "selectSnack('popcorn')"
+            ng-class="{dull: step1 && snack != 'popcorn'}">
+            <span class="thumbnail">
+              <img src="3.jpg">
+              <div class="caption" ng-class="{gray: snack == 'popcorn'}">
+                <label>
+                  <input type="radio" ng-model="snack" value="popcorn">
+                  Popcorn
+                </label>
+              </div>
+            </span>            
+            </span>
+          <span class="col-md-3" ng-click=
+          "selectSnack('pigs')"
+            ng-class="{dull: step1 && snack != 'pigs'}">
+            <span class="thumbnail">
+              <img src="4.jpg">
+              <div class="caption" ng-class="{gray: snack == 'pigs'}">
+                <label>
+                  <input type="radio" ng-model="snack" value="pigs">Pigs in a blanket
+                </label>
+              </div>
+            </span>
+          </span>
+        </div>
+      </div>  
+
+      <div class="row" id="vaction">
+        <div class="col-md-12">
+          <p>2. Choose a vacation</p>
+          <span class="col-md-3">
+            <div class="btn-group-vertical" ng-click="selectState('Colorado')">
+              <div class="btn" 
+                ng-class="{'btn-danger': vacation != 'Colorado',
+                  'btn-primary': vacation == 'Colorado'}"
+                >
+              </div>
+              <div class="btn" 
+                ng-class="{'btn-default': vacation != 'Colorado',
+                  'btn-primary': vacation == 'Colorado',
+                  'color-white': vacation == 'Colorado'
+                }" 
+                >Colorado</div> 
+            </div>
+          </span>        
+          <span class="col-md-3"> 
+            <div class="btn-group-vertical" ng-click="selectState('California')"> 
+              <div class="btn" 
+                ng-class="{'btn-danger': vacation != 'California',
+                  'btn-primary': vacation == 'California'}">
+                </div>
+              <div class="btn" 
+                ng-class="{'btn-default': vacation != 'California', 
+                  'btn-primary': vacation == 'California',
+                  'color-white': vacation == 'California'}"
+                >California</div> 
+            </div>        
+            
+          </span>        
+          <span class="col-md-3"> 
+            <div class="btn-group-vertical" ng-click="selectState('Camp David')"> 
+              <div class="btn" 
+                ng-class="{'btn-danger': vacation != 'Camp David',
+                  'btn-primary': vacation == 'Camp David'}">
+                </div>
+              <div class="btn" 
+                ng-class="{'btn-default': vacation != 'Camp David', 
+                  'btn-primary': vacation == 'Camp David',
+                  'color-white': vacation == 'Camp David'}"
+                >Camp David</div> 
+            </div>  
+          </span>     
+          <span class="col-md-3"> 
+            <div class="btn-group-vertical" ng-click="selectState('Mississippi')">
+              <div class="btn" 
+                ng-class="{'btn-danger': vacation != 'Mississippi',
+                  'btn-primary': vacation == 'Mississippi'}"
+                >
+              </div>
+              <div class="btn" 
+                ng-class="{'btn-default': vacation != 'Mississippi',
+                  'btn-primary': vacation == 'Mississippi',
+                  'color-white': vacation == 'Mississippi'
+                }" 
+                >Mississippi</div> 
+            </div>                    
+          </span>
+        </div>
+      </div>
+      <div class="row" id="animal">
+        <div class="col-md-12">
+          <p>3. Choose an animal</p>
+          <div class="col-md-12">
+            <div class="btn-group btn-group-justified" ng-click="selectAnimal('bear')">
+              <div class="btn" 
+                ng-class="{'dark-blue': animal == 'bear',
+                'btn-danger': animal != 'bear'
+                }">                
+              </div>
+              <div class="btn main" 
+                ng-class="{blue: animal == 'bear',
+                          'color-white': animal == 'bear',
+                  'btn-default': animal != 'bear'
+                }">
+
+                Bear
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="btn-group btn-group-justified" ng-click="selectAnimal('Bobcat')">
+              <div class="btn" 
+                ng-class="{'dark-blue': animal == 'Bobcat',
+                'btn-danger': animal != 'Bobcat'
+                }">                
+              </div>
+              <div class="btn main" 
+                ng-class="{blue: animal == 'Bobcat',
+                          'color-white': animal == 'Bobcat',
+                  'btn-default': animal != 'Bobcat'
+                }">
+                Bobcat
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="btn-group btn-group-justified" ng-click="selectAnimal('Horse')">
+              <div class="btn" 
+                ng-class="{'dark-blue': animal == 'Horse',
+                'btn-danger': animal != 'Horse'
+                }">                
+              </div>
+              <div class="btn main" 
+                ng-class="{blue: animal == 'Horse',
+                          'color-white': animal == 'Horse',
+                  'btn-default': animal != 'Horse'
+                }">
+
+                Horse
+              </div>
+            </div>
+          </div>                    
+          <div class="col-md-12">
+            <div class="btn-group btn-group-justified" ng-click="selectAnimal('Dog')">
+              <div class="btn" 
+                ng-class="{'dark-blue': animal == 'Dog',
+                'btn-danger': animal != 'Dog'
+                }">                
+              </div>
+              <div class="btn main" 
+                ng-class="{blue: animal == 'Dog',
+                          'color-white': animal == 'Dog',
+                  'btn-default': animal != 'Dog'
+                }">
+
+                Dog
+              </div>
+            </div>
+          </div>          
+        </div>
+      </div>
+      <div class="row" id="clothing">
+        <div class="col-md-12">
+          <p>4. Choose two articles your clothing.</p>
+          <span class="col-md-3" ng-click="selectClothing('boots')" 
+            ng-class="{dull: step4 && !clothingChecked('boots')}">
+            <span class="thumbnail">
+              <img src="clothing/1.jpg">
+              <div class="caption" ng-class="{gray: clothingChecked('boots')}">
+               <label>               
+                  <input type="checkbox" name="clothing" value="boots">Cowboy Boots
+                </label>
+              </div>
+            </span>           
+          </span>  
+          <span class="col-md-3"
+            ng-class="{dull: step4 && !clothingChecked('hat')}">
+            <span ng-click="selectClothing('hat')" class="thumbnail">
+              <img src="clothing/2.jpg">
+              <div class="caption" ng-class="{gray: clothingChecked('hat')}">
+               <label>               
+                  <input type="checkbox" name="clothing" value="hat">Top Hat
+                </label>
+              </div>
+            </span>
+          </span>           
+          <span class="col-md-3"
+            ng-class="{dull: step4 && !clothingChecked('socks')}">
+            <span ng-click="selectClothing('socks')" class="thumbnail">
+              <img src="clothing/3.jpg">
+              <div class="caption" ng-class="{gray: clothingChecked('socks')}">
+               <label>               
+                  <input type="checkbox" name="clothing" value="socks">Socks
+                </label>
+              </div>
+            </span>
+          </span> 
+          <span class="col-md-3"
+            ng-class="{dull: step4 && !clothingChecked('bowtie')}">
+            <span ng-click="selectClothing('bowtie')" class="thumbnail">
+              <img src="clothing/4.jpg">
+              <div class="caption" ng-class="{gray: clothingChecked('bowtie')}">
+               <label>               
+                  <input type="checkbox" name="clothing" value="bowtie">Bowtie
+                </label>
+              </div>
+            </span>
+          </span>                       
+        </div>
+      </div>
+
+      <div class="row" id="president" ng-show="president" >
+        <div class="results">
+          <div class="col-md-6">
+            <p>Which President Are You?</p>
+            <h3>You Got: {{presidentOptions[president]['name']}}</h3>
+            <p>{{presidentOptions[president]['content']}}</p>
+          </div>
+          <div class="col-md-6">
+            <img ng-src="presidents/{{president}}.jpg">
+          </div>
+        </div>
+        <p>SHARE YOUR RESULTS</p>
+        <div class="btn-group">
+          <a class="fb-share-button btn facebook-blue" data-href="https://developers.facebook.com/docs/plugins/"></a>
+          <a class="btn twitter-blue"  href="https://twitter.com/share"><img src="twitter.png"></a>
+        </div>
+      </div>          
+    </div>
+  </div>
+</body>
+
+</html>
