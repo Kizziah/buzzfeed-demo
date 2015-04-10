@@ -74,9 +74,14 @@ function Ctrl($scope) {
     return $scope.president = 'hw-bush';  
   };
 
+
   $scope.$watch('quiz', function() {
     if ($scope.step1 && $scope.step2 && $scope.step3 && $scope.step4) {
       $scope.showPresident()
+
+      $('html, body').stop().animate({
+        scrollTop: $('#president').offset().top
+      }, 750, 'easeInOutExpo');
     };
   }, true);
   
@@ -92,3 +97,4 @@ function Ctrl($scope) {
   };
 
 }
+

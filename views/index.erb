@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/application.css">
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  <script type="text/javascript" src="/jscroll.js"></script>
   <script type="text/javascript" src="/application.js"></script>
 
 </head>
@@ -34,11 +35,9 @@
         <ul class="nav navbar-nav navbar-right">          
             <li class='pull-right'><div><i class="glyphicon glyphicon-search"></i> SEARCH | LOGIN</div> </li>
         </ul>
-
       </div>
     </div>
   </nav>
-
   <div class="container" ng-controller="Ctrl">
     <div class="row text-center">
       <div class="btn-group">
@@ -103,7 +102,7 @@
           </span>
         </div>
       </div>  
-
+  
       <div class="row" id="vaction">
         <div class="col-md-12">
           <p>2. Choose a vacation</p>
@@ -260,8 +259,8 @@
           </span>                       
         </div>
       </div>
-
-      <div class="row" id="president" ng-show="president" >
+      <div id="president"></div>
+      <div class="row" ng-show="president">
         <div class="results">
           <div class="col-md-6">
             <p>Which President Are You?</p>
